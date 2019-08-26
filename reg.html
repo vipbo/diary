@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>长度最多为6个汉字或12个字母数字</title>
+    <script
+      type="text/javascript"
+      src="http://ajax.microsoft.com/ajax/jquery/jquery-1.7.2.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <form action="">
+      姓名：<input type="text" id="userName" value="" />
+      <span id="errorTip" style="color:#ff9955"></span><br /><br />
+      <input type="submit" value="确定" οnclick="return checkUserName();" />
+    </form>
+    <script>
+      $(document).ready(function() {
+        $("#userName").blur(function() {
+          checkUserName();
+        });
+        $("#userName").live("click", function() {
+          $("#errorTip").hide();
+        });
+      });
+      function checkUserName() {
+        var flag = 1;
+        var v = $("#userName").val();
+        //[\u4e00-\u9fa5]为汉字的unicode编码，/i表示匹配的时候不区分大小写。
+        var rx = /[a-z\d]/i,
+          rxcn = /[\u4e00-\u9fa5]/,
+          num = 0,
+          chr;
+
+        for (var i = 0, j = v.length; i < j; i++) {
+          chr = v.charAt(i); /////////
+
+          if (rx.test(chr)) num += 1;
+          else if (rxcn.test(chr)) num += 2;
+          else {
+            flag = 3;
+            break;
+          }
+        }
+        if (flag != 3) {
+          if (num > 12) {
+            $("#errorTip").show();
+            $("#errorTip").text(" * 长度最多为6个汉字或12个字母数字！");
+            return false;
+          } else if (num < 1) {
+            $("#errorTip").show();
+            $("#errorTip").text(" * 不能为空！");
+            return false;
+          }
+          return true;
+        } else {
+          $("#errorTip").show();
+          $("#errorTip").text(" * 不能包含特殊符号！");
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>

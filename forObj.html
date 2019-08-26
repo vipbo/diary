@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let newObj = {};
+      let obj = {
+        name: "a",
+        age: 3,
+        sex: "mal"
+      };
+      function addOneLetter(str) {
+        return str + "one";
+      }
+
+      for (let key in obj) {
+        newObj[key] = addOneLetter(obj[key]);
+      }
+      console.log(Object.entries(obj));
+      const newObj2 = {};
+      for (const [key, value] of Object.entries(obj)) {
+        newObj2[key] = value;
+      }
+      console.log(newObj2);
+
+      const Person = [{ name: "yuzf" }, { age: 18 }, { gender: "man" }];
+
+      const obj3 = Person.reduce((x, y) => Object.assign({}, x, y), {});
+      console.log("obj3", obj3);
+    </script>
+  </body>
+</html>

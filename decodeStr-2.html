@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function decodeStr(str = "") {
+        if (!str) {
+          return "";
+        }
+        return str
+          .replace(/&quot;/g, '"')
+          .replace(/&amp;/g, "&")
+          .replace(/&lt;/g, "<")
+          .replace(/&gt;/g, ">")
+          .replace(/&nbsp;/g, " ")
+          .replace(/&hellip;/g, "…")
+          .replace(/&mdash;/g, "—")
+          .replace(/&rdquo;/g, "”")
+          .replace(/&lsquo;/g, "‘")
+          .replace(/&ldquo;/g, "“")
+          .replace(/&middot;/g, "·")
+          .replace(/&rsquo;/g, "’")
+          .replace(/&mu;/g, "μ")
+          .replace(/&middot;/g, "·")
+          .replace(/&pound;/g, "￡")
+          .replace(/&szlig;/g, "ß")
+          .replace(/&copy;/g, "©")
+          .replace(/&reg;/g, "®")
+          .replace(/&yen;/g, "￥");
+      }
+      let email = "541199980.-_•1@qq.com-_.•12";
+      console.log("email", decodeStr(email));
+    </script>
+  </body>
+</html>
