@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./utils.js"></script>
+</head>
+
+<body>
+    <script>
+        // 方法一： 例子
+        console.log(isType("String")('text'))
+        console.log(isType("Number")(1))
+        console.log(isType("Array")([]))
+        console.log(isType("Object")({}))
+        console.log(isType("Object")({ name: '吉姆' }))
+        console.log(isType("Function")(function fn() { }))
+        console.log(isType("Function")(56))
+        // 方法二：
+        console.log('-------------')
+        console.log(isEmptyObject({}))
+        console.log(isEmptyObject({ name: '吉姆格林' }))
+
+
+    </script>
+</body>
+
+</html>
