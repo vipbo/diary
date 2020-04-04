@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let obj = {
+        //     age: 2,
+        //     name: '张三',
+        //     say: () => {// 此处有三种写法，function ,es6,箭头函数
+        //         console.log(`${this.name} + ${this.age}`, this)
+        //     }
+        // }
+        // console.log('--', this)
+        // obj.say()
+        // let res = obj.say;
+        // res()
+
+        // let demo = 'outer' // 尝试换成var声明
+
+        // let obj = {
+        //     demo: 'inner',
+        //     fn: function () {// 尝试改成es6写法
+        //         console.log('this.name', this.demo)
+        //     }
+        // }
+        // obj.fn();
+        // let temp = obj.fn;
+        // temp();
+
+        // let 声明的变量会默认挂在的window对象上，而 let声明的变量或者方法不会挂在window下
+        //  箭头函数没有自己的this ，会使用上一级中的this
+        // 对用对象在变量中保存的是地址
+        // 函数的es6写法不会对this的指向产生影响
+
+        let demo = 'outer'
+
+        let obj = {
+            demo: 'inner',
+            fn() {
+                // console.log('this.demo', this.demo)
+                setTimeout(() => {
+                    console.log('this.demo', this.demo)
+                }, 3000)
+            }
+        }
+
+
+
+        obj.fn()
+        let temp = obj.fn;
+        temp();
+    </script>
+</body>
+
+</html>
