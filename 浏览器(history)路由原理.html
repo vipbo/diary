@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id='root'></div>
+    <button onclick="push('/a')">/a</button>
+    <button onclick="push('/b')">/b</button>
+    <button onclick="push('/c')">/c</button>
+    <script>
+
+        // 浏览器路由（history路由）原理：利用h5的Api实现路由的切换，
+        // history对象提供了操作浏览器会话历史的接口。
+        // historylength 属性声明了浏览器历史列表中的元素数量
+        // pushState HTML5引入了 history.pushState() 和 history.replaceState() 方法，它们分别可以添加和修改历史记录条目。这些方法通常与window.onpopstate配合使用
+        // onpopstate window.onpopstate是popstate事件在window对象上的事件处理程序
+        let box = document.getElementById('root');
+        window.onpopstate = function (event) {
+            box.innerHTML = event.satte.to
+        }
+        window.onpushstate = function (state, title, url) {
+            box.innerHTML = event.satte.to || url
+        }
+        // 重写hitstory  window.history.pushState
+        let oldPushState = window.history.pushState;
+        window.history.pushState = function (state, title, url) {
+            window.onpushstate(state, title, url);
+            oldPushState.call(window.history, state, title, url);
+        }
+        function push(to) {
+
+            window.history.pushState({ to }, null, to)
+        }
+    </script>
+
+</body>
+
+</html>
